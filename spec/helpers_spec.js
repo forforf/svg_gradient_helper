@@ -1,27 +1,17 @@
 describe('ccd3', function() {
-  var main, domTesting, domTestingId;
-
-  // Setup and remove the DOM node used for testing
-  //--------------------------
-  beforeEach(function() {
-    domTestingId = 'ccd3-testing';
-    var main = document.getElementsByTagName("body")[0];
-    var domFragment = document.createDocumentFragment();
-    var containerFrag = domFragment.appendChild( document.createElement('div'));
-    var containerId = domTestingId;
-    containerFrag.setAttribute('id', containerId);
-    main.appendChild(containerFrag);
-    domTesting = document.getElementById(domTestingId)
-    console.log(document);
-  });
-
-  afterEach(function(){
-    var main = document.getElementsByTagName("body")[0];
-    main.removeChild(domTesting);
-  });
-  //---------------------------
 
   describe('helpers', function() {
+    var domTestingId = 'ccd3-testing-helpers';
+    var domTesting;
+
+    beforeEach(function() {
+      domTesting = setUpDomTestArea(domTestingId);
+    });
+
+    afterEach(function(){
+      tearDownDomTestArea(domTestingId)
+    });
+
 
     it('passes sanity checks', function(){
       expect(ccd3.helpers.d3jQLove).toBeDefined();
