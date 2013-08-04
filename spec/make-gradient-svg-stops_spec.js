@@ -1,8 +1,8 @@
 describe('ccd3', function() {
 
-  describe('setGradientSvgStops', function() {
+  describe('makeGradientSvgStops', function() {
     it('passes sanity checks', function(){
-      expect(ccd3.setGradientSvgStops).toBeDefined();
+      expect(ccd3.makeGradientSvgStops).toBeDefined();
     });
 
 
@@ -15,7 +15,7 @@ describe('ccd3', function() {
       it('creates a one item array of svg:stops for a single item color array', function(){
 
         singleColorArray = ['#123456'];
-        var svgStops = ccd3.setGradientSvgStops(singleColorArray);
+        var svgStops = ccd3.makeGradientSvgStops(singleColorArray);
 
         var d3Stops = d3.selectAll(svgStops);
 
@@ -30,7 +30,7 @@ describe('ccd3', function() {
 
         beforeEach(function(){
           colorArray = ['#000', '#f00', '#0f0', '#00f', '#fff'];
-          svgStops = ccd3.setGradientSvgStops(colorArray);
+          svgStops = ccd3.makeGradientSvgStops(colorArray);
           d3Stops = d3.selectAll(svgStops);
         });
 
@@ -66,7 +66,7 @@ describe('ccd3', function() {
             {color: '#111111', offset:0,   opacity:0.3},
             {color: '#888888', offset:1,   opacity:1}
           ];
-          svgStops = ccd3.setGradientSvgStops(stopArray);
+          svgStops = ccd3.makeGradientSvgStops(stopArray);
           d3Stops = d3.selectAll(svgStops);
         });
 

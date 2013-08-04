@@ -72,7 +72,7 @@ window.ccd3 = (function() {
   }
 
   //gradientStops can be unsorted, it will be returned in offset order
-  function setGradientSvgStops(gradientStops){
+  function makeGradientSvgStops(gradientStops){
     var gradientSvgStops = [];
 
     var firstGradientStop = gradientStops[0]
@@ -96,9 +96,10 @@ window.ccd3 = (function() {
       return parseFloat(a.getAttribute('offset')) - parseFloat(b.getAttribute('offset'))
     });
 
-    console.log(gradientSvgStops);
     return gradientSvgStops;
   }
+
+
 
 
   // Constructor Function (not sure if this is needed yet)
@@ -109,20 +110,9 @@ window.ccd3 = (function() {
   // Element Functions
   // -----------------
 
-  ccd3.setGradientSvgStops = setGradientSvgStops;
+  ccd3.makeGradientSvgStops = makeGradientSvgStops;
 
-//  ccd3.rect = function(coreOpts){
-//    var rect;  //svg element
-//    var validCoreAttrs = ['x', 'y', 'width', 'height', 'rx', 'ry']
-//    var validOpts = mapToValidOpts(coreOpts, validCoreAttrs);
-//
-//    rect = createNode('rect');
-//
-//    //set attributes
-//    Object.keys(validOpts).forEach(function(attrKey){
-//      rect.setAttribute(attrKey, validOpts[attrKey])
-//    })
-//  };
+
 
 
 
