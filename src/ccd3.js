@@ -11,8 +11,8 @@ window.ccd3 = (function() {
   // -----------------
 
   // create document fragment
-  function createNode(tag){
-    var el = document.createElement(tag);
+  function createSvgNode(tag){
+    var el = document.createElementNS(svgns, tag);
     return document.createDocumentFragment().appendChild(el);
   }
 
@@ -55,7 +55,7 @@ window.ccd3 = (function() {
   }
 
   function gradStopObjToSvgStop(gradStopObj){
-    var svgStopNode = createNode('svg:stop');
+    var svgStopNode = createSvgNode('stop');
     svgStopNode.setAttribute("offset", gradStopObj.offset);
     svgStopNode.setAttribute("stop-color", gradStopObj.color);
     svgStopNode.setAttribute("stop-opacity", gradStopObj.opacity);
@@ -132,7 +132,7 @@ window.ccd3 = (function() {
     //Options (not configurable at this point)
     var spreadMethod = "pad";
 
-    var svgLinGradNode = createNode('svg:linearGradient');
+    var svgLinGradNode = createSvgNode('linearGradient');
     svgLinGradNode.setAttribute("id", id);
 
     svgLinGradNode.setAttribute("x1", svgVector.x1);
