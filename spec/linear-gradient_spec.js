@@ -10,7 +10,7 @@ describe('ccd3', function() {
       beforeEach(function(){
         var colorArray = ['#000', '#f00', '#0f0', '#00f', '#fff'];
         gradientStops = ccd3.makeGradientSvgStops(colorArray);
-      })
+      });
 
       it('creates a dom id attribute', function(){
         var domId='dom-id-lin-grad-test';
@@ -68,8 +68,5 @@ describe('ccd3', function() {
         expect(d3.select(linGrad).attr('y2')).toEqual("85%");
       });
     });
-
-
-
   });
 });

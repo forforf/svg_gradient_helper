@@ -1,6 +1,7 @@
 window.ccd3 = (function() {
   // Main object
   var ccd3 = {};
+  var svgns = 'http://www.w3.org/2000/svg';
 
   // Private variables
   // -----------------
@@ -147,24 +148,47 @@ window.ccd3 = (function() {
 
   }
 
+  function addDef(defsContent, parentSelector){
+    var svgNode, defsNode;
 
-  // Constructor Function (not sure if this is needed yet)
-  function Ccd3(els) {
+    var parent = document.querySelector(parentSelector);
+
+    var svgNodes = document.getElementsByTagNameNS(svgns, 'svg');
+
+    var svgFinder = parent.querySelector('svg');
+
+    //if there's no svg section create one
+    if (svgFinder === null){
+      svgNode = document.createElementNS(svgns, 'svg');
+    } else {
+      svgNode = document.getElementsByTagNameNS(svgns, 'svg')[0];
+    }
+    //we have an svgNode now
+
+    var svgDefsFinder = parent.querySelector('svg defs');
+
+    // if there is no defs section create one
+    if (svgDefsFinder === null){
+      var defsNode = document.createElementNS(svgns, 'defs');
+    } else {
+      defsNode = document.getElementsByTagNameNS(svgns, 'defs')[0];
+    }
+    // we have defsNode now
+
+    defsNode.appendChild(defsContent);
+    svgNode.appendChild(defsNode);
+    parent.appendChild(svgNode);
 
   }
+
 
   // Element Functions
   // -----------------
 
   ccd3.makeGradientSvgStops = makeGradientSvgStops;
   ccd3.linearGradient = linearGradient;
+  ccd3.addDef = addDef;
 
-
-
-
-
-  // ...
-  ccd3.linearGradientBox = "foo";
 
 
   // Container for helper functions
