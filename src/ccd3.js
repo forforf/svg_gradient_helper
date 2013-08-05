@@ -71,6 +71,23 @@ window.ccd3 = (function() {
     return validOpts;
   }
 
+  function setVectors(vecs, vec, defVal){
+    if (vecs === undefined || vecs === null) { vecs = {} }
+    if (typeof vecs[vec] == 'string' || vecs[vec] instanceof String){
+      if (vecs[vec].match(/\d+%$/)){
+        return;
+      } else {
+        vecs[vec] = parseFloat(vecs[vec]);
+      }
+    }
+    // convert to percentage string
+    if (isNaN(vecs[vec])) { vecs[vec] = defVal }
+    vecs[vec] = parseFloat(vecs[vec]);
+    if (vecs[vec] < 0) { vecs[vec] = 0 }
+    if (vecs[vec] > 1) { vecs[vec] = 1 }
+    vecs[vec] = "" + vecs[vec]*100 + "%";
+  }
+
   //gradientStops can be unsorted, it will be returned in offset order
   function makeGradientSvgStops(gradientStops){
     var gradientSvgStops = [];
@@ -99,7 +116,36 @@ window.ccd3 = (function() {
     return gradientSvgStops;
   }
 
+  function linearGradient(id, gradientStops, svgVector){
 
+    //Validations
+    if ( typeof svgVector !== 'object'){
+     svgVector = { x1: 0.0, y1: 0.0, x2: 0.0, y2: 1.0 };
+    }
+    setVectors(svgVector, "x1", 0.0);
+    setVectors(svgVector, "y1", 0.0);
+    setVectors(svgVector, "x2", 0.0);
+    setVectors(svgVector, "y2", 1.0);
+
+
+    //Options (not configurable at this point)
+    var spreadMethod = "pad";
+
+    var svgLinGradNode = createNode('svg:linearGradient');
+    svgLinGradNode.setAttribute("id", id);
+
+    svgLinGradNode.setAttribute("x1", svgVector.x1);
+    svgLinGradNode.setAttribute("y1", svgVector.y1);
+    svgLinGradNode.setAttribute("x2", svgVector.x2);
+    svgLinGradNode.setAttribute("y2", svgVector.y2);
+
+    gradientStops.forEach(function(gradStop){
+      svgLinGradNode.appendChild(gradStop);
+    });
+
+    return svgLinGradNode;
+
+  }
 
 
   // Constructor Function (not sure if this is needed yet)
@@ -111,6 +157,7 @@ window.ccd3 = (function() {
   // -----------------
 
   ccd3.makeGradientSvgStops = makeGradientSvgStops;
+  ccd3.linearGradient = linearGradient;
 
 
 

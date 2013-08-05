@@ -72,7 +72,6 @@ describe('ccd3', function() {
 
         it('has proper size', function(){
           expect(d3Stops.size()).toEqual(3);
-          //expect(d3Stops.attr('stop-opacity')).toEqual('1');
         });
 
         it('has the proper color assignments', function(){
