@@ -4,6 +4,8 @@ ccd3
 Currently this library simplifies the creation of linear gradients for SVG.
 The library itself has no external dependencies, but D3 is used in the tests.
 
+[![Build Status](https://travis-ci.org/forforf/ccd3.png)](https://travis-ci.org/forforf/ccd3)
+
 API:
 
 Making  SVG Linear Gradient:
