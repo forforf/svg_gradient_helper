@@ -1,8 +1,8 @@
 describe('svg_gradient_helper', function() {
 
-  describe('makeGradientSvgStops', function() {
+  describe('makeStops', function() {
     it('passes sanity checks', function(){
-      expect(svg_gradient_helper.makeGradientSvgStops).toBeDefined();
+      expect(svg_gradient_helper.makeStops).toBeDefined();
     });
 
 
@@ -12,7 +12,7 @@ describe('svg_gradient_helper', function() {
       it('creates a one item array of svg:stops for a single item color array', function(){
 
         singleColorArray = ['#123456'];
-        var svgStops = svg_gradient_helper.makeGradientSvgStops(singleColorArray);
+        var svgStops = svg_gradient_helper.makeStops(singleColorArray);
 
         expect(svgStops.length).toEqual(1);
         expect(svgStops[0].getAttribute('stop-color')).toEqual('#123456');
@@ -32,7 +32,7 @@ describe('svg_gradient_helper', function() {
 
         beforeEach(function(){
           colorArray = ['#000', '#f00', '#0f0', '#00f', '#fff'];
-          svgStops = svg_gradient_helper.makeGradientSvgStops(colorArray);
+          svgStops = svg_gradient_helper.makeStops(colorArray);
         });
 
         it('has proper size and opacity', function(){
@@ -67,7 +67,7 @@ describe('svg_gradient_helper', function() {
             {color: '#111111', offset:0,   opacity:0.3},
             {color: '#888888', offset:1,   opacity:1}
           ];
-          svgStops = svg_gradient_helper.makeGradientSvgStops(stopArray);
+          svgStops = svg_gradient_helper.makeStops(stopArray);
         });
 
         it('has proper size', function(){

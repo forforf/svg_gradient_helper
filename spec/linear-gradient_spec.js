@@ -9,7 +9,7 @@ describe('svg_gradient_helper', function() {
       var gradientStops, angle;
       beforeEach(function(){
         var colorArray = ['#000', '#f00', '#0f0', '#00f', '#fff'];
-        gradientStops = svg_gradient_helper.makeGradientSvgStops(colorArray);
+        gradientStops = svg_gradient_helper.makeStops(colorArray);
       });
 
       it('creates a dom id attribute', function(){

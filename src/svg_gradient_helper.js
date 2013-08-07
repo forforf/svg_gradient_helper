@@ -182,15 +182,12 @@ window.svg_gradient_helper = (function() {
 
   }
 
-
-  // Element Functions
+  // Public API
   // -----------------
 
-  svg_gradient_helper.makeGradientSvgStops = makeGradientSvgStops;
+  svg_gradient_helper.makeStops = makeGradientSvgStops;
   svg_gradient_helper.linearGradient = linearGradient;
   svg_gradient_helper.addDef = addDef;
-
-
 
   // Container for helper functions
   var helpers = svg_gradient_helper.helpers = {};
@@ -218,8 +215,8 @@ window.svg_gradient_helper = (function() {
 
 
 
-  // SVG Methods
 
 
+  // return global
   return svg_gradient_helper;
 })();
