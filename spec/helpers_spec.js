@@ -45,7 +45,7 @@ describe('svg_gradient_helper', function() {
 
       describe('jQuery compatibility tests', function(){
         var nojQueryTestsNeeded = function(){
-          it('jQuery library not loaded, so no compability test needed', function(){
+          it('jQuery library not loaded, so no compatibility test needed', function(){
             expect(true).toBe(true)
           });
         };
@@ -66,7 +66,7 @@ describe('svg_gradient_helper', function() {
 
       describe('D3 compatibility tests', function(){
         var noD3TestsNeeded = function(){
-          it('D3 library not loaded, so no compability test needed', function(){
+          it('D3 library not loaded, so no compatibility test needed', function(){
             expect(true).toBe(true)
           });
         };

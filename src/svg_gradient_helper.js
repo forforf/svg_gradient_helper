@@ -149,10 +149,10 @@ window.svg_gradient_helper = (function() {
 
   }
 
-  function addDef(defsContent, parentSelector){
+  function addDef(defsContent, parent){
     var svgNode, defsNode;
 
-    var parent = document.querySelector(parentSelector);
+    var parent = getNode(parent);
 
     var svgNodes = document.getElementsByTagNameNS(svgns, 'svg');
 
