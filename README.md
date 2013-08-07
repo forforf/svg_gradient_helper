@@ -4,7 +4,7 @@ Currently this library simplifies the creation of linear gradients for SVG.
 The library itself has no external dependencies, but is compatible with jQuery
 and D3 node selection.
 
-## Current Build Status from Travis-CI
+### Current Build Status from Travis-CI
 [![Build Status](https://travis-ci.org/forforf/svg_gradient_helper.png)](https://travis-ci.org/forforf/svg_gradient_helper)
 
 ## Usage
@@ -13,7 +13,7 @@ and D3 node selection.
 
 `<script type="text/javascript" src="src/svg_gradient_helper.js"></script>`
 
-### Making a basic Linear Gradient definition for use in SVG elements:
+### Basic linear gradient:
 
 ```
 // a more convenient handle
@@ -30,12 +30,16 @@ var linGrad = grad.linearGradient('my-grad-id', stopArray);
 grad.addDef(linGrad, 'body');
 ```
 
-
 This creates a linear gradient that is accessible using url('my-grad-id').
 
 When adding the gradient to the svg defs, a new defs section will be created if
 one doesn't exist. Or the first defs section found will have the gradient
 definition added to it.
+
+[gradient]
+[jsFiddle of the above example](http://jsfiddle.net/forforf/3tYf3/1/)
+
+
 
 
 
