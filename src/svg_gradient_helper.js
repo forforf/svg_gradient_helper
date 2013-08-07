@@ -182,20 +182,9 @@ window.svg_gradient_helper = (function() {
 
   }
 
-  // Public API
-  // -----------------
-
-  svg_gradient_helper.makeStops = makeGradientSvgStops;
-  svg_gradient_helper.linearGradient = linearGradient;
-  svg_gradient_helper.addDef = addDef;
-
-  // Container for helper functions
-  var helpers = svg_gradient_helper.helpers = {};
-
-
   // returns a regular document node from a CSS Lookup string,
   // jQuery node, or a regular document node (latter is just pass through)
-  helpers.getNode = function(lookup) {
+  function getNode(lookup) {
 
     if( isString(lookup)){
       return document.querySelector(lookup);
@@ -211,10 +200,19 @@ window.svg_gradient_helper = (function() {
     }
 
     return lookup;
-  };
+  }
 
 
+  // Public API
+  // -----------------
 
+  svg_gradient_helper.makeStops = makeGradientSvgStops;
+  svg_gradient_helper.linearGradient = linearGradient;
+  svg_gradient_helper.addDef = addDef;
+
+  // Container for helper functions
+  svg_gradient_helper.helpers = {};
+  svg_gradient_helper.helpers.getNode = getNode;
 
 
   // return global
