@@ -36,7 +36,6 @@ When adding the gradient to the svg defs, a new defs section will be created if
 one doesn't exist. Or the first defs section found will have the gradient
 definition added to it.
 
-[gradient]
 [jsFiddle of the above example](http://jsfiddle.net/forforf/3tYf3/1/)
 
 
