@@ -1,5 +1,5 @@
-ccd3
-====
+SVG Gradient Helper
+===================
 
 Currently this library simplifies the creation of linear gradients for SVG.
 The library itself has no external dependencies, but D3 is used in the tests.

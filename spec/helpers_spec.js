@@ -16,43 +16,74 @@ describe('ccd3', function() {
 
 
     it('passes sanity checks', function(){
-      expect(ccd3.helpers.d3jQLove).toBeDefined();
       expect(domTesting).toBeDefined();
       expect(document.getElementById(domTestingId)).toBe(domTesting);
     });
 
-    describe('d3jQLove', function() {
+
+    describe('getNode', function() {
       var container, containerId;
-      var d3jQLove = ccd3.helpers.d3jQLove;
+      var getNode = ccd3.helpers.getNode;
 
       beforeEach(function(){
         container = domTesting.appendChild( document.createElement('div'));
-        containerId = 'do-you-love-me';
+        containerId = 'get-node-test';
         container.setAttribute('id', containerId);
+
       });
 
       it('passes sanity checks', function(){
-        expect(d3jQLove).toBeDefined();
+        expect(getNode).toBeDefined();
         expect(containerId).toBeDefined();
-        expect(jQuery(container) instanceof jQuery).toBe(true);
       });
 
-      it('converts jQuery into standard DOM node', function(){
-        var jQNode = jQuery('#'+containerId);
-        expect(d3jQLove(jQNode)).toBeDefined()
-        expect(d3jQLove(jQNode)).toBe(document.getElementById(containerId));
-      });
-
-      it('passes through D3 nodes', function(){
-        var d3Node = d3.select('#'+containerId);
-        expect(d3jQLove(d3Node)).toBeDefined();
-        expect(d3jQLove(d3Node)).toBe(d3Node);
-      });
-
-      it('passes through selectors', function(){
+      it('gets node using css selector', function(){
         var selector = '#'+containerId;
-        expect(d3jQLove(selector)).toBeDefined();
-        expect(d3jQLove(selector)).toBe(selector);
+        expect(getNode(selector)).toBeDefined();
+        expect(getNode(selector)).toBe(container);
+      });
+
+      describe('jQuery compatibility tests', function(){
+        var nojQueryTestsNeeded = function(){
+          it('jQuery library not loaded, so no compability test needed', function(){
+            expect(true).toBe(true)
+          });
+        };
+        var jQueryTests = function(){
+          it('converts jQuery node into standard DOM node', function(){
+            var jQNode = jQuery('#'+containerId);
+            expect(getNode(jQNode)).toBeDefined()
+            expect(getNode(jQNode)).toBe(container);
+          });
+        };
+
+        if (typeof jQuery === 'undefined'){
+          nojQueryTestsNeeded();
+        } else {
+          jQueryTests();
+        }
+      });
+
+      describe('D3 compatibility tests', function(){
+        var noD3TestsNeeded = function(){
+          it('D3 library not loaded, so no compability test needed', function(){
+            expect(true).toBe(true)
+          });
+        };
+        var d3Tests = function(){
+          it('D3 nodes are special arrays, finds first item in nested array', function(){
+            var d3Node = d3.select('#'+containerId);
+            expect(getNode(d3Node)).toBeDefined();
+            expect(getNode(d3Node)).toBe(container);
+          });
+        };
+
+
+        if (typeof d3 === 'undefined'){
+          noD3TestsNeeded();
+        } else {
+          d3Tests();
+        }
       });
 
 

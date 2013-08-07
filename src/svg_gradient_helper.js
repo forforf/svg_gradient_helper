@@ -195,13 +195,28 @@ window.ccd3 = (function() {
   // Container for helper functions
   var helpers = ccd3.helpers = {};
 
-  //converts native jQuery node into a D3 compatible node
-  helpers.d3jQLove = function(el) {
-    if(el instanceof jQuery) {
-      return el[0];
+
+  // returns a regular document node from a CSS Lookup string,
+  // jQuery node, or a regular document node (latter is just pass through)
+  helpers.getNode = function(lookup) {
+
+    if( isString(lookup)){
+      return document.querySelector(lookup);
     }
-    return el;
+
+    // if lookup is a jQuery node return normal node
+    if (typeof jQuery !== 'undefined'  && lookup instanceof jQuery){ return lookup[0] }
+    // if lookup is a D3 node return first node
+    if (typeof d3 !== 'undefined'  && lookup instanceof d3.selection){
+      //flattens array and gets first element
+      var flatSelection = [].concat.apply([], lookup);
+      return flatSelection[0]
+    }
+
+    return lookup;
   };
+
+
 
   // SVG Methods
 

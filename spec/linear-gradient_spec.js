@@ -15,7 +15,8 @@ describe('ccd3', function() {
       it('creates a dom id attribute', function(){
         var domId='dom-id-lin-grad-test';
         var linGrad = ccd3.linearGradient(domId, gradientStops);
-        expect(d3.select(linGrad).attr('id')).toEqual(domId);
+
+        expect(linGrad.getAttribute('id')).toEqual(domId);
       });
 
       it('creates gradient vector starting at 0%', function(){
@@ -23,8 +24,8 @@ describe('ccd3', function() {
         var startPerc = "0%";
 
         var linGrad = ccd3.linearGradient(domId, gradientStops);
-        expect(d3.select(linGrad).attr('x1')).toEqual(startPerc);
-        expect(d3.select(linGrad).attr('y1')).toEqual(startPerc);
+        expect(linGrad.getAttribute('x1')).toEqual(startPerc);
+        expect(linGrad.getAttribute('y1')).toEqual(startPerc);
       });
 
       it('creates gradient vector starting at 0%', function(){
@@ -32,8 +33,8 @@ describe('ccd3', function() {
         var startPerc = "0%";
 
         var linGrad = ccd3.linearGradient(domId, gradientStops);
-        expect(d3.select(linGrad).attr('x1')).toEqual(startPerc);
-        expect(d3.select(linGrad).attr('y1')).toEqual(startPerc);
+        expect(linGrad.getAttribute('x1')).toEqual(startPerc);
+        expect(linGrad.getAttribute('y1')).toEqual(startPerc);
       });
 
       it('provides vertical gradient by default', function(){
@@ -41,8 +42,8 @@ describe('ccd3', function() {
         var x2EndPerc = "0%";
         var y2EndPerc = "100%";
         var linGrad = ccd3.linearGradient(domId, gradientStops);
-        expect(d3.select(linGrad).attr('x2')).toEqual(x2EndPerc);
-        expect(d3.select(linGrad).attr('y2')).toEqual(y2EndPerc);
+        expect(linGrad.getAttribute('x2')).toEqual(x2EndPerc);
+        expect(linGrad.getAttribute('y2')).toEqual(y2EndPerc);
       });
 
       it('supports arbitrary gradients using floats', function(){
@@ -51,10 +52,10 @@ describe('ccd3', function() {
 
         var linGrad = ccd3.linearGradient(domId, gradientStops, gradientVector);
 
-        expect(d3.select(linGrad).attr('x1')).toEqual("10%");
-        expect(d3.select(linGrad).attr('y1')).toEqual("20%");
-        expect(d3.select(linGrad).attr('x2')).toEqual("90%");
-        expect(d3.select(linGrad).attr('y2')).toEqual("80%");
+        expect(linGrad.getAttribute('x1')).toEqual("10%");
+        expect(linGrad.getAttribute('y1')).toEqual("20%");
+        expect(linGrad.getAttribute('x2')).toEqual("90%");
+        expect(linGrad.getAttribute('y2')).toEqual("80%");
       });
 
       it('supports arbitrary gradients using perc strings', function(){
@@ -62,10 +63,10 @@ describe('ccd3', function() {
         var gradientVector = {x1: "15%", y1: "25%", x2: "95%", y2: "85%"}
 
         var linGrad = ccd3.linearGradient(domId, gradientStops, gradientVector);
-        expect(d3.select(linGrad).attr('x1')).toEqual("15%");
-        expect(d3.select(linGrad).attr('y1')).toEqual("25%");
-        expect(d3.select(linGrad).attr('x2')).toEqual("95%");
-        expect(d3.select(linGrad).attr('y2')).toEqual("85%");
+        expect(linGrad.getAttribute('x1')).toEqual("15%");
+        expect(linGrad.getAttribute('y1')).toEqual("25%");
+        expect(linGrad.getAttribute('x2')).toEqual("95%");
+        expect(linGrad.getAttribute('y2')).toEqual("85%");
       });
     });
   });
