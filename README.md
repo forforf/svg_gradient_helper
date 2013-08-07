@@ -1,24 +1,41 @@
-SVG Gradient Helper
-===================
+# SVG Gradient Helper
 
 Currently this library simplifies the creation of linear gradients for SVG.
-The library itself has no external dependencies, but D3 is used in the tests.
+The library itself has no external dependencies, but is compatible with jQuery
+and D3 node selection.
 
+## Current Build Status from Travis-CI
 [![Build Status](https://travis-ci.org/forforf/svg_gradient_helper.png)](https://travis-ci.org/forforf/svg_gradient_helper)
 
-API:
+## Usage
 
-Making  SVG Linear Gradient:
+### Include the javascript source
 
-Basic vertical gradient:
+`<script type="text/javascript" src="src/svg_gradient_helper.js"></script>`
 
-`var colorStops = svg_gradient_helper.makeGradientSvgStops(["#0000aa","#000000", "#00aa00"]);`
+### Making a basic Linear Gradient definition for use in SVG elements:
 
-`var linGrad = linearGradient('my-grad-id', colorStops);`
+```
+// a more convenient handle
+var grad = svg_gradient_helper;
 
-`svg_gradient_helper.addDef(linGrad, 'body');`
+// make the gradient stops from an array of colors
+var colorArray = ["#aaaaaa","#ffaaaa","#ffffaa","#aaffaa", "#ffffff"];
+var stopArray = grad.makeStops(colorArray);
 
-Creates a linear gradient that is accessible using url('my-grad-id').
+//make the linear gradient definition with it's ID attribute for referencing it
+var linGrad = grad.linearGradient('my-grad-id', stopArray);
+
+//tell it where the svg defs block lives
+grad.addDef(linGrad, 'body');
+```
+
+
+This creates a linear gradient that is accessible using url('my-grad-id').
+
+When adding the gradient to the svg defs, a new defs section will be created if
+one doesn't exist. Or the first defs section found will have the gradient
+definition added to it.
 
 
 
