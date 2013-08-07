@@ -1,9 +1,9 @@
 
 
-describe('ccd3', function() {
+describe('svg_gradient_helper', function() {
 
   describe('helpers', function() {
-    var domTestingId = 'ccd3-testing-helpers';
+    var domTestingId = 'svg_gradient_helper-testing-helpers';
     var domTesting;
 
     beforeEach(function() {
@@ -23,7 +23,7 @@ describe('ccd3', function() {
 
     describe('getNode', function() {
       var container, containerId;
-      var getNode = ccd3.helpers.getNode;
+      var getNode = svg_gradient_helper.helpers.getNode;
 
       beforeEach(function(){
         container = domTesting.appendChild( document.createElement('div'));

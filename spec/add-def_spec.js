@@ -1,8 +1,8 @@
-describe('ccd3', function() {
+describe('svg_gradient_helper', function() {
   var svgns = 'http://www.w3.org/2000/svg';
 
   describe('addDef', function() {
-    var domTestingId = 'ccd3-testing-add-def';
+    var domTestingId = 'svg_gradient_helper-testing-add-def';
     var domTesting, svgElemNode, elemId;
 
     beforeEach(function() {
@@ -19,14 +19,14 @@ describe('ccd3', function() {
 
 
     it('passes sanity checks', function(){
-      expect(ccd3.addDef).toBeDefined();
+      expect(svg_gradient_helper.addDef).toBeDefined();
       expect(domTesting).toBeDefined();
       expect(document.getElementById(domTestingId)).toBe(domTesting);
     });
 
     it('adds element to defs without pre-existing svg defs elements', function() {
 
-      ccd3.addDef(svgElemNode, "#"+domTestingId);
+      svg_gradient_helper.addDef(svgElemNode, "#"+domTestingId);
 
       expect(document.querySelector('svg defs')).toBeDefined();
       expect(document.querySelector('svg defs')).not.toBeNull();
@@ -41,7 +41,7 @@ describe('ccd3', function() {
       var svgNode = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
       document.getElementById(domTestingId).appendChild(svgNode);
 
-      ccd3.addDef(svgElemNode, "#"+domTestingId);
+      svg_gradient_helper.addDef(svgElemNode, "#"+domTestingId);
 
       expect(document.querySelector('svg defs')).toBeDefined();
       expect(document.querySelector('svg defs')).not.toBeNull();
@@ -57,7 +57,7 @@ describe('ccd3', function() {
       svgNode.appendChild(defsNode);
       document.getElementById(domTestingId).appendChild(svgNode);
 
-      ccd3.addDef(svgElemNode, "#"+domTestingId);
+      svg_gradient_helper.addDef(svgElemNode, "#"+domTestingId);
 
       expect(document.querySelector('svg defs')).toBeDefined();
       expect(document.querySelector('svg defs')).not.toBeNull();

@@ -1,7 +1,7 @@
 
-window.ccd3 = (function() {
+window.svg_gradient_helper = (function() {
   // Main object
-  var ccd3 = {};
+  var svg_gradient_helper = {};
   var svgns = 'http://www.w3.org/2000/svg';
 
   // Private variables
@@ -186,14 +186,14 @@ window.ccd3 = (function() {
   // Element Functions
   // -----------------
 
-  ccd3.makeGradientSvgStops = makeGradientSvgStops;
-  ccd3.linearGradient = linearGradient;
-  ccd3.addDef = addDef;
+  svg_gradient_helper.makeGradientSvgStops = makeGradientSvgStops;
+  svg_gradient_helper.linearGradient = linearGradient;
+  svg_gradient_helper.addDef = addDef;
 
 
 
   // Container for helper functions
-  var helpers = ccd3.helpers = {};
+  var helpers = svg_gradient_helper.helpers = {};
 
 
   // returns a regular document node from a CSS Lookup string,
@@ -221,5 +221,5 @@ window.ccd3 = (function() {
   // SVG Methods
 
 
-  return ccd3;
+  return svg_gradient_helper;
 })();
