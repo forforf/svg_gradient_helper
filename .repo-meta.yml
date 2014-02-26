@@ -1,11 +1,11 @@
 ---
 ratings:
-  stable: 9,
-  useful: 6,
-  caliber: 6,
-  tidy: 5,
-  tended: 5,
-  tests: 8,
+  stable: 9
+  useful: 6
+  caliber: 6
+  tidy: 5
+  tended: 5
+  tests: 8
   unique: 2
 progress:
   stable: feature complete
